@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration status="OFF">
+    <Properties>
+        <Property name="filename">/var/log/anz-homework/anz-homework.log</Property>
+        <Property name="archivedFilename">/var/log/anz-homework/anz-homework-%d{MM-dd-yyyy}.log</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+        <RollingFile name="File" fileName="${filename}" filePattern="${archivedFilename}">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="24" modulate="true" />
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="INFO">
+            <AppenderRef ref="File" />
+        </Root>
+    </Loggers>
+</Configuration>

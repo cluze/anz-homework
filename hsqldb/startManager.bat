@@ -1,0 +1,1 @@
+mvn -Pmanager exec:java
